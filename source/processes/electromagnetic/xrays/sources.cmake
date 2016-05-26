@@ -59,6 +59,7 @@ GEANT4_DEFINE_MODULE(NAME G4xrays
         G4VTRModel.hh
         G4VTransitionRadiation.hh
         G4VXTRenergyLoss.hh
+        G4XrayBoundaryProcess.hh
         G4XTRGammaRadModel.hh
         G4XTRRegularRadModel.hh
         G4XTRTransparentRegRadModel.hh
@@ -75,6 +76,7 @@ GEANT4_DEFINE_MODULE(NAME G4xrays
         G4TransparentRegXTRadiator.cc
         G4VTransitionRadiation.cc
         G4VXTRenergyLoss.cc
+        G4XrayBoundaryProcess.cc
         G4XTRGammaRadModel.cc
         G4XTRRegularRadModel.cc
         G4XTRTransparentRegRadModel.cc

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.0.0, 2016-05-26T12:58:24. -->
+<!-- Written by QtCreator 4.0.0, 2016-05-26T17:06:24. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -68,9 +68,12 @@
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.0">
     <valuelist type="QVariantList" key="CMake.Configuration">
      <value type="QString">CMAKE_CXX_COMPILER:STRING=%{Compiler:Executable}</value>
+     <value type="QString">GEANT4_INSTALL_DATA:BOOL=ON</value>
+     <value type="QString">GEANT4_USE_OPENGL_X11:BOOL=ON</value>
+     <value type="QString">GEANT4_USE_QT:BOOL=ON</value>
      <value type="QString">QT_QMAKE_EXECUTABLE:STRING=%{Qt:qmakeExecutable}</value>
     </valuelist>
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/export/home/zcen/Downloads/build-geant4.10.02.p01-Desktop_Qt_5_6_0_GCC_64bit-Default</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/export/home/zcen/local/Geant4-build</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="QString" key="CMakeProjectManager.MakeStep.AdditionalArguments"></value>
