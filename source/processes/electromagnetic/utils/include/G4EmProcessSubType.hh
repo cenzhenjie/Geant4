@@ -63,7 +63,8 @@ enum G4EmProcessSubType
   fCerenkov = 21,
   fScintillation = 22,
   fSynchrotronRadiation = 23,
-  fTransitionRadiation = 24  
+  fTransitionRadiation = 24,
+  fXrayBoundary = 25  
 };
 
 #endif

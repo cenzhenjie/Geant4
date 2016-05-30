@@ -54,6 +54,7 @@ enum G4OpticalProcessIndex {
   kAbsorption,    ///< Absorption process index
   kRayleigh,      ///< Rayleigh scattering process index
   kMieHG,         ///< Mie scattering process index
+  kXrayBoundary,  ///< X-ray boundary process index
   kBoundary,      ///< Boundary process index
   kWLS,           ///< Wave Length Shifting process index
   kNoProcess      ///< Number of processes, no selected process
@@ -75,6 +76,7 @@ G4String G4OpticalProcessName(G4int processNumber)
     case kAbsorption:    return "OpAbsorption";
     case kRayleigh:      return "OpRayleigh";
     case kMieHG:         return "OpMieHG";
+    case kXrayBoundary:  return "XrayBoundary";
     case kBoundary:      return "OpBoundary";
     case kWLS:           return "OpWLS";
     default:             return "NoProcess";

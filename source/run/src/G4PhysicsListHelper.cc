@@ -771,6 +771,16 @@ void G4PhysicsListHelper::ReadInDefaultOrderingParameter()
   theTable->push_back(tmp);
   sizeOfTable +=1;  
 
+  tmp.processTypeName = "XrayBoundary";
+  tmp.processType     = 2;
+  tmp.processSubType  = 25;
+  tmp.ordering[0]     = -1;
+  tmp.ordering[1]     = -1;
+  tmp.ordering[2]     =  1000;
+  tmp.isDuplicable =  false;
+  theTable->push_back(tmp);
+  sizeOfTable +=1;
+
   tmp.processTypeName = "OpAbsorb";
   tmp.processType     = 3;
   tmp.processSubType  = 31;

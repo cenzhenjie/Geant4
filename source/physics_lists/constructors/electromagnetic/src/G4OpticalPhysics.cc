@@ -47,6 +47,7 @@
 #include "G4OpWLS.hh"
 #include "G4Scintillation.hh"
 #include "G4Cerenkov.hh"
+#include "G4XrayBoundaryProcess.hh"
 
 #include "G4LossTableManager.hh"
 #include "G4EmSaturation.hh"
@@ -244,6 +245,15 @@ namespace UIhelpers {
         
         buildCommands(CerenkovProcess,DIR_CMDS"/cerenkov/",GUIDANCE" for Cerenkov process.");
     }
+
+    void buildCommands(G4XrayBoundaryProcess* XrayBoundaryProcess)
+    {
+        //BUild UI commands for XrayBoundary
+        G4GenericMessenger* mess = new G4GenericMessenger(XrayBoundaryProcess,DIR_CMDS"/XrayBoundary/",GUIDANCE" for X-ray boundary process.");
+        G4AutoDelete::Register(mess);
+
+        buildCommands(XrayBoundaryProcess,DIR_CMDS"/XrayBoundary/",GUIDANCE" for X-ray boundary process.");
+    }
 }
 
 
@@ -324,6 +334,10 @@ void G4OpticalPhysics::ConstructProcess()
   UIhelpers::buildCommands(CerenkovProcess);
   OpProcesses[kCerenkov] = CerenkovProcess;
 
+  G4XrayBoundaryProcess* XrayBoundaryProcess = new G4XrayBoundaryProcess();
+  UIhelpers::buildCommands(XrayBoundaryProcess);
+  OpProcesses[kXrayBoundary] = XrayBoundaryProcess;
+
   aParticleIterator->reset();
 
   while( (*aParticleIterator)() ){
@@ -350,6 +364,11 @@ void G4OpticalPhysics::ConstructProcess()
           pManager->AddProcess(ScintillationProcess);
           pManager->SetProcessOrderingToLast(ScintillationProcess,idxAtRest);
           pManager->SetProcessOrderingToLast(ScintillationProcess,idxPostStep);
+    }
+    if( XrayBoundaryProcess->IsApplicable(*particle) &&
+        fProcessUse[kXrayBoundary] ) {
+          pManager->AddProcess(XrayBoundaryProcess);
+          pManager->SetProcessOrdering(XrayBoundaryProcess,idxPostStep);
     }
 
   }

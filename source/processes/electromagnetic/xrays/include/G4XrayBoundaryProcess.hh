@@ -24,7 +24,7 @@
 // ********************************************************************
 //
 //
-// $Id: G4OpBoundaryProcess.hh 84717 2014-10-20 07:39:47Z gcosmo $
+// $Id: G4XrayBoundaryProcess.hh 84717 2014-10-20 07:39:47Z gcosmo $
 //
 //
 ////////////////////////////////////////////////////////////////////////
@@ -52,6 +52,7 @@
 
 #include "G4Step.hh"
 #include "G4VDiscreteProcess.hh"
+#include "G4EmProcessSubType.hh"
 
 #include "G4ParallelWorldProcess.hh"
 #include "G4Gamma.hh"
@@ -78,11 +79,12 @@ class G4XrayBoundaryProcess : public G4VDiscreteProcess {
 
  private:
 
-
+  G4XrayBoundaryProcess(const G4XrayBoundaryProcess &right);
   //////////////
   // Operators
   //////////////
 
+  G4XrayBoundaryProcess& operator=(const G4XrayBoundaryProcess &right);
 
  public:
 
@@ -92,7 +94,7 @@ class G4XrayBoundaryProcess : public G4VDiscreteProcess {
 
   G4bool IsApplicable(const G4ParticleDefinition &aParticleType);
 
-  G4double GetMeanFreePath(const G4Track &aTrack, G4double previousStepSize, G4ForceCondition *condition);
+  G4double GetMeanFreePath(const G4Track &aTrack, G4double , G4ForceCondition *condition);
   // Returns infinity; i. e. the process does not limit the step,
   // but sets the 'Forced' condition for the DoIt to be invoked at
   // every step. However, only at a boundary will any action be
@@ -115,7 +117,8 @@ class G4XrayBoundaryProcess : public G4VDiscreteProcess {
 // For now, return true for all particles
 inline
 G4bool G4XrayBoundaryProcess::IsApplicable(const G4ParticleDefinition &aParticleType) {
-  return ( &aParticleType == G4Gamma::Gamma() );
+    return true;
+  //return ( &aParticleType == G4Gamma::Gamma() );
 }
 
 #endif /* G4XrayBoundaryProcess_h */

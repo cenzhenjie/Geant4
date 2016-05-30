@@ -198,6 +198,8 @@ void G4OpticalPhysicsMessenger::SetNewValue(G4UIcommand* command,
         fSelectedProcessIndex = kRayleigh;
     } else if ( pn == "OpMieHG" )       {
         fSelectedProcessIndex = kMieHG;
+    } else if ( pn == "XrayBoundary" )  {
+        fSelectedProcessIndex = kXrayBoundary;
     } else if ( pn == "OpBoundary" )    {
         fSelectedProcessIndex = kBoundary;
     } else if ( pn == "OpWLS" )         {
@@ -225,6 +227,8 @@ void G4OpticalPhysicsMessenger::SetNewValue(G4UIcommand* command,
         fSelectedProcessIndex = kRayleigh;
       } else if ( pn == "OpMieHG" )       {
         fSelectedProcessIndex = kMieHG;
+      } else if ( pn == "XrayBoundary" )  {
+          fSelectedProcessIndex = kXrayBoundary;
       } else if ( pn == "OpBoundary" )    {
         fSelectedProcessIndex = kBoundary;
       } else if ( pn == "OpWLS" )         {

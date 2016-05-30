@@ -54,7 +54,14 @@
 /////////////////
 // Constructors
 /////////////////
-G4XrayBoundaryProcess::G4XrayBoundaryProcess(const G4String &processName, G4ProcessType type) : G4VDiscreteProcess(processName, type) {}
+G4XrayBoundaryProcess::G4XrayBoundaryProcess(const G4String &processName, G4ProcessType type) : G4VDiscreteProcess(processName, type)
+{
+    if (verboseLevel>0) {
+       G4cout << GetProcessName() << " is created " << G4endl;
+    }
+
+    SetProcessSubType(fXrayBoundary);
+}
 
 
 ////////////////
@@ -75,41 +82,42 @@ G4VParticleChange* G4XrayBoundaryProcess::PostStepDoIt(const G4Track& aTrack, co
     //  NOTE: PostSetpDoIt of this process should be
     //        invoked after G4ParallelWorldProcess!
 
-    const G4Step* pStep = &aStep;
+//    const G4Step* pStep = &aStep;36
 
-    const G4Step* hStep = G4ParallelWorldProcess::GetHyperStep();
+//    const G4Step* hStep = G4ParallelWorldProcess::GetHyperStep();
 
-    if (hStep) pStep = hStep;
+//    if (hStep) pStep = hStep;
 
-    G4bool isOnBoundary =
-            (pStep->GetPostStepPoint()->GetStepStatus() == fGeomBoundary);
+//    G4bool isOnBoundary =
+//            (pStep->GetPostStepPoint()->GetStepStatus() == fGeomBoundary);
 
-    if (isOnBoundary) {
-       Material1 = pStep->GetPreStepPoint()->GetMaterial();
-       Material2 = pStep->GetPostStepPoint()->GetMaterial();
-    } else {
-       // if ( verboseLevel > 0) BoundaryProcessVerbose();
-       return G4VDiscreteProcess::PostStepDoIt(aTrack, aStep);
-    }
+//    if (isOnBoundary) {
+//       Material1 = pStep->GetPreStepPoint()->GetMaterial();
+//       Material2 = pStep->GetPostStepPoint()->GetMaterial();
+//    } else {
+//       // if ( verboseLevel > 0) BoundaryProcessVerbose();
+//       return G4VDiscreteProcess::PostStepDoIt(aTrack, aStep);
+//    }
 
-    G4VPhysicalVolume* thePrePV  =
-                           pStep->GetPreStepPoint() ->GetPhysicalVolume();
-    G4VPhysicalVolume* thePostPV =
-                           pStep->GetPostStepPoint()->GetPhysicalVolume();
+//    G4VPhysicalVolume* thePrePV  =
+//                           pStep->GetPreStepPoint() ->GetPhysicalVolume();
+//    G4VPhysicalVolume* thePostPV =
+//                           pStep->GetPostStepPoint()->GetPhysicalVolume();
 
-    if ( verboseLevel > 0 ) {
-       G4cout << " X-ray at Boundary! " << G4endl;
-       if (thePrePV)  G4cout << " thePrePV:  " << thePrePV->GetName()  << G4endl;
-       if (thePostPV) G4cout << " thePostPV: " << thePostPV->GetName() << G4endl;
-    }
-
+//    if ( verboseLevel > 0 ) {
+//       G4cout << " X-ray at Boundary! " << G4endl;
+//       if (thePrePV)  G4cout << " thePrePV:  " << thePrePV->GetName()  << G4endl;
+//       if (thePostPV) G4cout << " thePostPV: " << thePostPV->GetName() << G4endl;
+//    }
+//    G4cout << " X-ray at Boundary! " << G4endl;
     return G4VDiscreteProcess::PostStepDoIt(aTrack, aStep);
 }
 
 // GetMeanFreePath
 // ---------------
 //
-G4double G4XrayBoundaryProcess::GetMeanFreePath(const G4Track &, G4double previousStepSize, G4ForceCondition *condition) {
+G4double G4XrayBoundaryProcess::GetMeanFreePath(const G4Track &, G4double , G4ForceCondition *condition)
+{
   *condition = Forced;
 
   return DBL_MAX;
